@@ -1,0 +1,76 @@
+﻿html {
+    background-color: #020a13;
+}
+
+#logo {
+    max-height: 3.8rem;
+    border-radius: 40%;
+    border: 1px solid #fff;
+    margin: 0 1.2rem 1.2rem 0;
+}
+
+#company {
+    font-size: 2.9rem;
+    font-weight: bold;
+}
+
+#brand {
+    padding: 2rem 0 2rem 0;
+    text-align: center;
+}
+
+#services .item h2 {
+    font-size: 1.8rem;
+}
+
+#services .item {
+    margin: 1.3rem 0 1.3rem;
+}
+
+#services .row:nth-child(1) > div:nth-child(1) .title i {
+    color: #284ab6;
+}
+
+#services .row:nth-child(1) > div:nth-child(2) .title i {
+    color: #f6e878;
+}
+
+#services .row:nth-child(2) > div:nth-child(2) .title i {
+    color: #ff0000;
+}
+
+#services .row:nth-child(2) > div:nth-child(1) .title i {
+    color: #2dba1d
+}
+
+
+#contact {
+    background-color: #020a13;
+    color: #fff;
+    padding: 2.7rem 1.7rem;
+    margin-top: 1.7rem;
+}
+
+    #contact .info {
+        font-size: 1.6rem;
+    }
+
+        #contact .info .item {
+            margin: 0 0 1.1rem;
+        }
+
+        #contact .info .text {
+        }
+
+    #contact a {
+        color: #f4f938;
+    }
+
+    #contact .column {
+        margin: 0 0 1.7rem;
+    }
+
+    #contact .asking {
+        /*padding-top: 1.02rem;*/
+        font-size: 1.2rem;
+    }
