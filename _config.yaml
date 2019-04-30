@@ -1,0 +1,6 @@
+collections:
+- services
+
+exclude:
+  - README.md
+  - build.ps1

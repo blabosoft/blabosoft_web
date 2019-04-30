@@ -1,5 +1,10 @@
-﻿<!DOCTYPE html>
+---
+skills: dfgdg
+---
+
+<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,13 +15,17 @@
     <meta property="og:image" content="https://blabosoft.com/assets/images/og_logo.jpg" />
     <meta property="og:image:width" content="232" />
     <meta property="og:image:height" content="232" />
-    <meta property="og:description" content="Developing scalable web applications for the cloud with handling massive amount of data." />
+    <meta property="og:description"
+        content="Developing scalable web applications for the cloud with handling massive amount of data." />
 
-    <meta name="description" content="Developing scalable web applications for the cloud with handling massive amount of data." />
+    <meta name="description"
+        content="Developing scalable web applications for the cloud with handling massive amount of data." />
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.11/css/all.css" integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/" crossorigin="anonymous" />
-    <link href="assets/css/site.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.11/css/all.css"
+        integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/" crossorigin="anonymous" />
+    <link href="assets/css/site.css?v={{site.time | date: "%Y%m%d_%H%M%S"}}" rel="stylesheet" />
 
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
@@ -27,67 +36,41 @@
     <meta name="theme-color" content="#ffffff">
 
 </head>
+
 <body>
-        <div class="container">
-            <div id="brand">
-                <img id="logo" src="assets/images/logo5.png" /><span id="company">BlaboSoft</span>
-            </div>
+    <div class="container">
+        <div id="brand">
+            <img id="logo" src="assets/images/logo5.png" /><span id="company">BlaboSoft</span>
         </div>
+    </div>
+    <main>
 
-        <main>
-
-            <section id="services">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="item">
-                                <h2 class="title">
-                                    <i class="fa fa-cloud"></i> Cloud computing
-                                </h2>
-                                <div class="description">
-                                    Passionately building cloud based applications. It doesn't matter where to host (<a href="https://azure.microsoft.com/en-gb/" target="_blank">Azure</a>, <a href="https://aws.amazon.com/" target="_blank">AWS</a>, <a href="https://www.digitalocean.com/" target="_blank">Digital Ocean</a> or in your private cloud), we can build scalable softwares that can serve hundreds of millions users. We do our best for <strong>your users never experience slow response times.</strong>
+        <section id="services">
+            <div class="container">
+                <div class="row">
+                    {% for item in site.services %}
+                    <div class="col-md-6">
+                        <div class="item">
+                            <div class="row header">
+                                <div class="col-auto"><i class="{{item.icon}} align-middle" style="color:{{item.icon_color}};"></i></div>
+                                <div class="col-9">
+                                    <h2 class="title">
+                                        {{item.title}}
+                                    </h2>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="item">
-                                <h2 class="title">
-                                    <i class="fa fa-database"></i> Processing massive amount of data
-                                </h2>
-                                <div class="description">
-                                    Can your business easily produce billion records of data every day? If the answer is yes then I am sure that this big data amount may hide treasures for you. We can help you to <strong>visualize, mine and use this data in real-time</strong>. (We can do it in the cloud or in your data center)
-                                </div>
+                            <div class="description">
+                                {{item.content}}
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="item">
-                                <h2 class="title">
-                                    <i class="fab fa-searchengin"></i> Incredibly fast text search
-                                </h2>
-                                <div class="description">
-                                    Free text searching one of the ways that users like to use finding some information in softwares (e.g. Google). We can build full text search functionalities to your (existing or new) application and it does not matter you want to search in some small tables in a database or in the contents of millions of pdf documents. You can do it with milliseconds response time even with exactly controlling the which documents can be read by the users (authorization)
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="item">
-                                <h2 class="title">
-                                    <i class="fa fa-user-secret"></i> Security audits
-                                </h2>
-                                <div class="description">
-                                    A very common mistake during the software development when a method/service of an application (for example published on an URL) is accessible without authorization. In this case there is great chance for experienced users to discover this security holes threating your hard-built business. We can help you to identify this kind of deficiencies.
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+                    {% endfor %}
                 </div>
-            </section>
+            </div>
+        </section>
 
 
-        </main>
+    </main>
     <footer id="contact">
         <div class="container">
             <div class="row">
@@ -95,7 +78,8 @@
                     <div class="info column">
                         <div class="item">
                             <span class="key"><i class="fa fa-envelope"></i> <span class="text"></span> </span>
-                            <span class="value"><a href="mailto:hello@blabosoft.com" target="_blank">hello@blabosoft.com</a> </span>
+                            <span class="value"><a href="mailto:hello@blabosoft.com"
+                                    target="_blank">hello@blabosoft.com</a> </span>
                         </div>
                         <div class="item">
                             <span class="key"><i class="fa fa-phone"></i> <span class="text">Phone:</span> </span>
@@ -105,7 +89,8 @@
                 </div>
                 <div class="col-md-5 col-lg-7">
                     <div class="asking column">
-                        Feel free to contact us. We would be glad to provide advices in strategic, architectural or technical topics.<br />   <strong>Let's talk about innovation ;)</strong>
+                        Feel free to contact us. We would be glad to provide advices in strategic, architectural or
+                        technical topics.<br /> <strong>Let's talk about innovation ;)</strong>
                     </div>
 
                 </div>
@@ -122,6 +107,6 @@
 
         gtag('config', 'UA-119238032-1');
     </script>
-    <!-- VS Code v2 -->
 </body>
+
 </html>

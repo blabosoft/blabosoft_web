@@ -19,31 +19,23 @@
     text-align: center;
 }
 
+/* ------------------------- */
+
 #services .item h2 {
-    font-size: 1.8rem;
+    font-size: 1.9rem;
+    font-family: monospace, sans-serif;
 }
 
 #services .item {
-    margin: 1.3rem 0 1.3rem;
+    margin: 1.3rem 0 1.4rem;
 }
 
-#services .row:nth-child(1) > div:nth-child(1) .title i {
-    color: #284ab6;
+#services .item .header i {
+    padding: 8px 0 14px;
+    font-size: 1.8rem;
 }
 
-#services .row:nth-child(1) > div:nth-child(2) .title i {
-    color: #f6e878;
-}
-
-#services .row:nth-child(2) > div:nth-child(2) .title i {
-    color: #ff0000;
-}
-
-#services .row:nth-child(2) > div:nth-child(1) .title i {
-    color: #2dba1d
-}
-
-
+/* ------------------------- */
 #contact {
     background-color: #020a13;
     color: #fff;
@@ -57,9 +49,6 @@
 
         #contact .info .item {
             margin: 0 0 1.1rem;
-        }
-
-        #contact .info .text {
         }
 
     #contact a {
