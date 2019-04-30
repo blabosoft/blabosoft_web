@@ -1,5 +1,5 @@
 ---
-icon_color: '#f6e878'
+icon_color: '#DC0060'
 icon: fa fa-database
 title: Processing massive amount of data
 ---
