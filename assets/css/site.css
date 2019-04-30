@@ -36,6 +36,24 @@
 }
 
 /* ------------------------- */
+
+#stack .header{
+    text-align: center;
+    margin: 0 0 20px 0;
+}
+#stack .header span{
+    font-style:italic;
+}
+
+#stack .items span{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.3rem;
+    padding: 0 8px 0 8px;
+    /* text-decoration: underline; */
+
+}
+/* ------------------------- */
+
 #contact {
     background-color: #020a13;
     color: #fff;

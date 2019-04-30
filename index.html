@@ -1,5 +1,5 @@
 ---
-skills: dfgdg
+stack: [.NET Core, Python, React, Redux, HTML, CSS, Javascript, Typescript, MS SQL, Postgres, ElasticSearch, Azure Cosmos DB, Apache, AWS, Azure, DigitalOcean, Docker, Amazon ECS, Kubernetes, Microservices, Performance optimization, Scalability, Azure DevOps, Github, Github Pages, CI / CD, VS Code, Process optimization, Automation]
 ---
 
 <!DOCTYPE html>
@@ -23,7 +23,8 @@ skills: dfgdg
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
         integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous" />
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
 
     <link href="assets/css/site.css?v={{site.time | date: "%Y%m%d_%H%M%S"}}" rel="stylesheet" />
@@ -53,7 +54,8 @@ skills: dfgdg
                     <div class="col-md-6">
                         <div class="item">
                             <div class="row header">
-                                <div class="col-auto"><i class="{{item.icon}} align-middle" style="color:{{item.icon_color}};"></i></div>
+                                <div class="col-auto"><i class="{{item.icon}} align-middle"
+                                        style="color:{{item.icon_color}};"></i></div>
                                 <div class="col-9">
                                     <h2 class="title">
                                         {{item.title}}
@@ -66,6 +68,23 @@ skills: dfgdg
                         </div>
                     </div>
                     {% endfor %}
+                </div>
+            </div>
+        </section>
+        <hr />
+        <section id="stack">
+            <div class="container">
+                <div class="header">
+                    <h2>Stack and skills</h2>
+                    <span>Our beloved tech stack includes, but not limited to:</span>
+                </div>
+                <div class="items">
+                    {% for item in page.stack %}
+                    <span>{{item}}</span>
+                    {% if forloop.last != true %}
+                        |
+                    {% endif %}
+                    {% endfor %}            
                 </div>
             </div>
         </section>
