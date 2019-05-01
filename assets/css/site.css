@@ -36,7 +36,9 @@
 }
 
 /* ------------------------- */
-
+#stack{
+    padding: 30px 0 30px 0;
+}
 #stack .header{
     text-align: center;
     margin: 0 0 20px 0;
@@ -44,11 +46,15 @@
 #stack .header span{
     font-style:italic;
 }
-
-#stack .items span{
+#stack .items {
+    text-align: center;
+}
+#stack .items .item{
     font-family: 'Courier New', Courier, monospace;
     font-size: 1.3rem;
-    padding: 0 8px 0 8px;
+    padding: 0 10px 0 0;
+    margin: 0 4px 0 0;
+    border-right: 1px solid
     /* text-decoration: underline; */
 
 }
