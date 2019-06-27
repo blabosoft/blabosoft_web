@@ -1,9 +1,5 @@
 ---
-stack: [.NET Core, Python, React, Redux, HTML, CSS, Javascript, Typescript, MS SQL, Postgres, ElasticSearch, Azure
-Cosmos DB, Apache, AWS, Azure, DigitalOcean, Docker, Amazon ECS, Kubernetes, Microservices, Performance optimization,
-Scalability, Azure DevOps, Github, Github Pages, CI / CD, VS Code, Process optimization, Automation]
 ---
-
 <!DOCTYPE html>
 <html>
 
@@ -74,22 +70,9 @@ Scalability, Azure DevOps, Github, Github Pages, CI / CD, VS Code, Process optim
             </div>
         </section>
         <hr />
-        <section id="stack">
-            <div class="container">
-                <div class="header">
-                    <h2>Stack and skills</h2>
-                    <span>Our beloved tech stack includes, but not limited to:</span>
-                </div>
-                <div class="items">
-                    {% for item in page.stack %}
-
-                    <span class="item">{{item}}</span>
-
-                    {% endfor %}
-                </div>
-            </div>
-        </section>
-
+        {% include references.html %}
+        <hr />
+        {% include stack.html %}
 
     </main>
     <footer id="contact">
