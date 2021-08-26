@@ -9,5 +9,5 @@ podman run --rm \
   --volume="$BUILD_DIRNAME:/srv/jekyll_build" \
   --volume="$CONTENT_DIR:/srv/jekyll" \
   -p 8777:8777 \
-  -it jekyll/jekyll:latest \
+  -it registry.hub.docker.com/jekyll/jekyll:latest \
   jekyll serve --port 8777 --destination /srv/jekyll_build --disable-disk-cache
