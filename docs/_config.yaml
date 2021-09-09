@@ -1,7 +1,7 @@
-collections:
-- services
-- references
+url: https://blabosoft.com # the base hostname & protocol for your site
 
-exclude:
-  - README.md
-  - build.ps1
+kramdown:
+  hard_wrap: true
+
+plugins:
+  - jekyll-sitemap

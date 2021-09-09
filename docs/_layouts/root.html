@@ -1,0 +1,38 @@
+---
+---
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{{page.title}}</title>
+
+    <meta property="og:title" content="BlaboSoft - Cloud application development" />
+    <meta property="og:url" content="https://blabosoft.com" />
+    <meta property="og:image" content="https://blabosoft.com/assets/images/og_logo.jpg" />
+    <meta property="og:image:width" content="232" />
+    <meta property="og:image:height" content="232" />
+    <meta property="og:description"
+        content="Developing scalable web applications for the cloud with handling massive amount of data." />
+
+    <meta name="description"
+        content="Developing scalable web applications for the cloud with handling massive amount of data." />
+
+    {% include css.html %}
+
+    {% include favicon.html %}
+
+</head>
+
+<body class="d-flex flex-column">
+    <main>
+        {{content}}
+    </main>
+    {% include _footer.html %}
+
+    {% include scripts.html %}
+
+</body>
+
+</html>
