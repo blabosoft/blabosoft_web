@@ -1,0 +1,20 @@
+<!-- Description -->
+{% assign seo_description = page.description | default: page.summary | default: "" %}
+<meta property="og:description" content="{{ seo_description }}" />
+<meta name="description" content="{{seo_description }}" />
+<meta property="twitter:description" content="{{ seo_description }}" />
+
+<!-- Title -->
+<title>{{page.title}}</title>
+<meta property="og:title" content="{{ page.title }}" />
+<meta property="twitter:title" content="{{ page.title }}" />
+
+<!-- Url -->
+<meta property="og:url" content="{{ site.url | append: page.url }}" />
+
+<!-- Image, we have a logo only at this stage -->
+<meta property="og:image" content="{{ site.url | append: "/assets/images/og_logo.jpg" }}" />
+<meta property="og:image:width" content="232" />
+<meta property="og:image:height" content="232" />
+
+
