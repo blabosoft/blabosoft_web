@@ -1,0 +1,54 @@
+-- ----------------------------
+-- Data Structure
+-- ----------------------------
+CREATE TABLE SimpleQueue
+(
+    Id UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
+    CreatedAt DATETIME2 NOT NULL,
+    ProcessingStartedAt DATETIME2,
+    Errors NVARCHAR(MAX),
+    Payload NVARCHAR(MAX)
+);
+
+CREATE INDEX IX_SIMPLEQUEUE_POP on SimpleQueue (ProcessingStartedAt, CreatedAt ASC)
+INCLUDE (Id)
+WHERE ProcessingStartedAt IS NULL;
+
+GO
+
+-- ----------------------------
+-- Push operation
+-- ----------------------------
+INSERT INTO SimpleQueue (Id, CreatedAt, Payload)
+VALUES (
+    'd6513382-4dcc-4c44-b044-08b98257037c' -- newly generated GUID
+    ,'2021-09-07 15:48:38.403' -- the current timestamp in UTC
+    ,'I am an awesome payload'
+);
+
+-- ----------------------------
+-- Pop operation
+-- ----------------------------
+
+UPDATE sq SET sq.ProcessingStartedAt = '2021-09-07 15:52:42.123' -- setting the current timestamp in UTC
+    OUTPUT INSERTED.Id, INSERTED.Payload -- returning with the stored data (popping)
+FROM SimpleQueue sq INNER JOIN (
+    SELECT TOP(1) sqInner.Id FROM SimpleQueue sqInner
+    WHERE sqInner.ProcessingStartedAt IS NULL
+    ORDER By sqInner.CreatedAt
+) sqOuter on sqOuter.Id = sq.Id
+;
+
+
+-- ----------------------------
+-- Deleting from the queue
+-- ----------------------------
+DELETE FROM SimpleQueue WHERE Id = 'd6513382-4dcc-4c44-b044-08b98257037c'
+;
+
+-- ----------------------------
+-- Logging an error
+-- ----------------------------
+UPDATE SimpleQueue SET Errors = 'Something went wrong'
+WHERE Id = 'd6513382-4dcc-4c44-b044-08b98257037c'
+;

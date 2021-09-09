@@ -1,0 +1,7 @@
+url: https://blabosoft.com # the base hostname & protocol for your site
+
+kramdown:
+  hard_wrap: true
+
+plugins:
+  - jekyll-sitemap
