@@ -5,9 +5,13 @@
 <meta property="twitter:description" content="{{ seo_description }}" />
 
 <!-- Title -->
-<title>{{page.title}}</title>
-<meta property="og:title" content="{{ page.title }}" />
-<meta property="twitter:title" content="{{ page.title }}" />
+{% assign seo_title = page.title | append: " | BlaboSoft" %}
+{% if page.full_title %}
+{% assign seo_title = page.full_title %}
+{% endif %}
+<title>{{ seo_title }}</title>
+<meta property="og:title" content="{{ seo_title }}" />
+<meta property="twitter:title" content="{{ seo_title }}" />
 
 <!-- Url -->
 <meta property="og:url" content="{{ site.url | append: page.url }}" />
