@@ -3,7 +3,25 @@ layout: root
 ---
 {% include _header_smaller.html %}
 
-<div class="post">
+<!-- JSON-LD -->
+<script type="application/ld+json">
+    { "@context": "https://schema.org", 
+     "@type": "BlogPosting",
+     "headline": "{{page.title}}",
+     "datePublished": "{{ page.date | date: '%Y-%m-%d' }}",
+     "dateCreated": "{{ page.date | date: '%Y-%m-%d' }}",
+     "description": "{{ page.description | default: page.summary }}",
+     "url": {{ site.url | append: page.url }},
+    "author": {
+        "@type": "Person",
+        "name": "Ákos Pintér",
+        "url": {{ site.url}}
+        //"image": {{ site.url | append: "/assets/images/akos_pinter.jpg"}}
+    }
+     }
+    </script>
+
+<article class="post">
     <div class="container">
         <div class="row">
             <div class="col-md-1 col-lg-2"></div>
@@ -14,7 +32,7 @@ layout: root
                         <span class="date">{{ page.date | date: '%B %d, %Y' }}</span>
                         <div class="tags">
                             {% for tag in site.tags %}
-                                <span>{{tag[0]}}</span>
+                            <span>{{tag[0]}}</span>
                             {% endfor %}
                         </div>
                     </div>
@@ -24,5 +42,4 @@ layout: root
             <div class="col-md-1 col-lg-2"></div>
         </div>
     </div>
-</div>
-
+</article>
