@@ -9,7 +9,7 @@ It's a common situation when you have to process items stored somewhere using ba
 
 A queue is a good data structure that fits for that kind of problem. You can find many good / feature rich queue implemtations ( for example: [Amazon SQS](https://aws.amazon.com/sqs "Amazon Simple Queue Service"){:target="_blank"} )
 
-However it is possible that you don't want to start using a new componenet to have a simple queue functionality, but you already use a relational database like PostgreSQL. I show you a very simple implementation of queue operations (push, pop) using a relational database. Applying this method your jobs can pop items atomically from the queue so having multiple job instances at the same time shouldn't be a problem.
+However it is possible that you don't want to start using a new component to have a simple queue functionality, but you already use a relational database like PostgreSQL. I show you a very simple implementation of queue operations (push, pop) using a relational database. Applying this method your jobs can pop items atomically from the queue so having multiple job instances at the same time shouldn't be a problem.
 
 ## Data Structure
 
@@ -91,7 +91,7 @@ After successfully processing the item you can simply delete the item from the q
 DELETE FROM simple_queue WHERE id = 'd6513382-4dcc-4c44-b044-08b98257037c'
 ```
 
-### Error handling
+### Error Handling
 
 If the item processing fails, the above data structure has the ability to store some information about the error. For example:
 
