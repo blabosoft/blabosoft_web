@@ -52,3 +52,57 @@ html,body{
     font-size: 1.4rem;
 }
 
+
+/* --------------------------------------------------------- */
+.post h1{
+    font-size: 3.3rem;
+    color: #111;
+    text-decoration: underline;
+    text-decoration-color: #598fdb;
+}
+
+@media (max-width: 900px) {
+    .post h1{
+        font-size: 2.8rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .post h1{
+        font-size: 2.5rem;
+    }
+}
+
+
+.post h2, .post h3, .post h4{
+    margin: 25px 0 16px;
+    color: #111;
+}
+
+.post{
+    color: #333;
+}
+
+.post pre code{
+    border: 1px solid #444;
+}
+
+
+.post .postInfo .date{
+    color: #555;
+    font-style: italic;
+}
+
+.post .postInfo .tags{
+    display: inline-block;
+    margin-left: 15px;
+}
+.post .postInfo .tags span{
+    display: inline-block;
+    padding: 2px 5px 2px 5px;
+    margin-right: 7px;
+    text-transform: lowercase;
+    background-color: #777;
+    color: #fff;
+    border: 1px solid #222;
+}
