@@ -10,6 +10,9 @@ layout: root
      "headline": "{{page.title}}",
      "datePublished": "{{ page.date | date: '%Y-%m-%d' }}",
      "dateCreated": "{{ page.date | date: '%Y-%m-%d' }}",
+{% if page.last_modified_at %}
+    "dateModified": "{{ page.last_modified_at | date: '%Y-%m-%d' }}",
+{% endif %}
      "description": "{{ page.description | default: page.summary }}",
      "url": "{{ site.url | append: page.url }}",
     "author": {
