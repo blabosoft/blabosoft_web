@@ -80,6 +80,8 @@ In the above example we use the `processing_started_at` column for checking whet
 
 The above command works well with `READ COMMITTED` isolation level, because it uses the `FOR UPDATE` modifier for the `SELECT` subquery. It ensures that the given row cannot be modified by an `UPDATE` from another transaction. You can read more about it in the [official documentation](https://www.postgresql.org/docs/9.0/sql-select.html#SQL-FOR-UPDATE-SHARE){:target="_blank"}.
 
+You can also use the `FOR UPDATE SKIP LOCKED` modifier instead of the simple `FOR UPDATE` to tune the performance. In that case the given transaction simply skips the rows that are locked by another transaction which is a good solution for a queue data structure. Without the `SKIP LOCKED` modifier the transaction waits until the other transaction finishes the locking.
+
 At this stage you have the item and other job instances cannot access it with this pop method.
 
 ## Finalizing the Queue Operation
@@ -89,7 +91,8 @@ After popping successfully the item from the queue, usually the given job proces
 After successfully processing the item you can simply delete the item from the queue using the `id` that you received with the pop operation.
 
 ```sql
-DELETE FROM simple_queue WHERE id = 'd6513382-4dcc-4c44-b044-08b98257037c'
+DELETE FROM simple_queue
+WHERE id = 'd6513382-4dcc-4c44-b044-08b98257037c'
 ```
 
 ### Error Handling
