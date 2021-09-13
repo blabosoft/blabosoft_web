@@ -83,8 +83,8 @@ html,body{
     color: #333;
 }
 
-.post pre code{
-    border: 1px solid #444;
+div.highlight {
+    margin: 20px 0 20px 0;
 }
 
 
