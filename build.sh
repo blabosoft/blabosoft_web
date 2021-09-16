@@ -15,4 +15,4 @@ podman run --rm \
   --name $CONTAINER_NAME \
   -p 8777:4000 \
   -it registry.hub.docker.com/jekyll/jekyll:latest \
-  jekyll serve  --destination /srv/jekyll_build --disable-disk-cache
+  jekyll serve  --destination /srv/jekyll_build --disable-disk-cache --drafts
