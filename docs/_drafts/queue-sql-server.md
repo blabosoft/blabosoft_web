@@ -77,7 +77,7 @@ We use the `ProcessingStartedAt` column as an indicator whether the processing o
 
 You can see the query part contains the `WITH (READPAST, UPDLOCK)` hints. The `UPDLOCK` tells the SQL Server to use update lock for the one queried item. The `READPAST` instructs the query engine to skip the items which are already locked. The latter results a very good performance because there is no waiting for the other transactions to be completed.
 
-The usage of these hints ensures atomicity and consistent behavior with good performance.
+The usage of these hints ensures atomicity and consistent behavior with good performance. This command works well at `READ COMMITTED` isolation level.
 
 Let's take a look at the execution plan of the above command:
 
@@ -108,3 +108,4 @@ It is also possible that you wasn't able to finalize the operation, because the 
 
 ## Summary
 
+We implemented a simple queue operation where the pop method is atomic and efficient. We achieved that using common table expression with update which returns data combined in one statement.
