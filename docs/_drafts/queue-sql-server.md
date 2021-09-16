@@ -5,9 +5,9 @@ permalink: implementing-queue-in-sql-server
 summary: Implementing simple and efficient queue operations in Microsoft SQL Server. The pop operation uses a common table expression (CTE) to implement an atomic 'test and set' method.
 ---
 
-In my [previous article](/implementing-queue-in-postgresql "Implementing a Simple Queue in PostgreSQL") I described how you can implement simple and efficient queue operations using PostgreSQL database engine. 
+In my [previous article](/implementing-queue-in-postgresql "Implementing a Simple Queue in PostgreSQL") I described the implementation of simple and efficient queue operations using PostgreSQL database engine. 
 
-Now I show you how you can implement the queue operations with the same interface on Microsoft SQL Server. The core concept is similar here, it uses atomic 'test and set'  method for the pop operation. Before you continue the reading, I recommend to check the [previous article](/implementing-queue-in-postgresql "Implementing a Simple Queue in PostgreSQL") to read more about the motivation and the concepts.
+Now I show you how you can implement the queue operations with the same interface on Microsoft SQL Server. The core concept is similar here, it uses atomic 'test and set'  method for the pop operation. Before you continue reading, I recommend to check the [previous article](/implementing-queue-in-postgresql "Implementing a Simple Queue in PostgreSQL") to read more about the motivation and the concept.
 
 ## Data Structure
 
@@ -29,9 +29,9 @@ WHERE ProcessingStartedAt IS NULL;
 ```
 
 - `Payload`: it is the general storage for the queue payload, the data must be in textual format, for example a `JSON` or a Base64-encoded string
-- `Errors`: you can store any error log here in case of a processing failure. You can implement any implement any manual/automated solution for error handling, it is one possible solution to leave the items in the queue if the processing failed
-- `CreatedAt`: it is used for sorting the items during the pop method and also shows the valuebale information about the creation time :) (You can find more the details later)
-- `ProcessingStartedAt`: it serves as an indicator whether the processing if the item has been started (You can find more the details later)
+- `Errors`: you can store any error log here in case of a processing failure. You can implement any manual/automated solution for error handling, it is one possible solution to leave the items in the queue if the processing failed
+- `CreatedAt`: it is used for sorting the items during the pop method and also shows the valuable information about the creation time :) (You can find more details later)
+- `ProcessingStartedAt`: it serves as an indicator whether the processing of the item has been started (You can find more details later)
 
 The `IX_SIMPLEQUEUE_POP` is a non-clustered index which is needed for the efficient pop operation.
 
@@ -48,11 +48,11 @@ VALUES (
 );
 ```
 
-When I published the blog post about the Postgres version of the queue implementation, more people asked why I didn't use the system time of the database for the creation time. The answer is I simply prefer adding the time values from the processing code because in this case I have bigger control. For example: I have a scheduled background job which pops elements from the queue, I query the current timestamp only at the beginning of the processing and use the same value for each pop operation. In this case the timestamp serves as a correlation id as well.
+When I published the blog post about the Postgres version of the queue implementation, some people asked why I didn't use the system time of the database for the creation time. The answer is I simply prefer adding the time values from the processing code because in this case I have bigger control. For example: I have a scheduled background job which pops elements from the queue, I query the current timestamp only at the beginning of the processing and use the same value for each pop operation. In this case the timestamp serves as a correlation id as well.
 
 ## Pop Operation using Atomic 'Test and Set'
 
-The pop operation means inidicating on an item the the processing of it has been started in our case. After a successful processing we will remove the item from the table.
+In our case, the pop operation means inidicating the processing of an item has been started. After a successful processing we will remove the item from the table.
 
 To pop an item from the queue we should query the first available item and flagging it that processing has been started. The operation should be atomic to ensure consistency.
 
@@ -75,15 +75,15 @@ OUTPUT inserted.Id, inserted.Payload
 
 We use the `ProcessingStartedAt` column as an indicator whether the processing of the given item has been started or not.
 
-You can see the query part contains the `WITH (READPAST, UPDLOCK)` hints. The `UPDLOCK` tells the SQL Server to use update lock for the one queried item. The `READPAST` instructs the query engine to skip the items which are already locked. The latter results a very good performance because there is no waiting for the other transactions to be completed.
+You can see the query part contains the `WITH (READPAST, UPDLOCK)` hints. The `UPDLOCK` tells the SQL Server to use update lock for the one queried item. The `READPAST` instructs the query engine to skip the items which are already locked. The latter results a very good performance because there is no waiting for other transactions to be completed.
 
-The usage of these hints ensures atomicity and consistent behavior with good performance. This command works well at `READ COMMITTED` isolation level.
+The usage of these hints ensures atomicity and consistency with good performance. This command works well at `READ COMMITTED` isolation level.
 
 Let's take a look at the execution plan of the above command:
 
 {% include image.html src="/assets/images/posts/pop-cte-with-update.png" alt="CTE with UPDATE plan" title="Execution Plan of the Pop Operation" %}
 
-The query uses the `IX_SIMPLEQUEUE_POP` index for getting the first available item and fortunately there is no any nested loops in the plan.
+The query uses the `IX_SIMPLEQUEUE_POP` index for getting the first available item and fortunately there is no nested loop in the plan.
 
 
 ## Finalizing the Queue Operation
@@ -104,7 +104,7 @@ WHERE Id = 'd6513312-4dcc-4c44-b044-08b98257037c'
 
 The above commands don't conflict with the pop operation because the `ProcessingStartedAt` cell has already been set.
 
-It is also possible that you wasn't able to finalize the operation, because the consumer process was killed before it could have made the finall call. There are many manual or automated solution to address this issue, but I don't cover them in this article.
+It is also possible that you wasn't able to finalize the operation, because the consumer process was killed before it could have made the finall call. There are many manual or automated solutions to address this issue, but I don't cover them in this article.
 
 ## Summary
 
