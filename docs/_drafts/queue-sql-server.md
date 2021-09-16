@@ -108,4 +108,4 @@ It is also possible that you wasn't able to finalize the operation, because the 
 
 ## Summary
 
-We implemented a simple queue operation where the pop method is atomic and efficient. We achieved that using common table expression with update which returns data combined in one statement.
+We implemented a simple queue operation where the pop method is atomic and efficient.
