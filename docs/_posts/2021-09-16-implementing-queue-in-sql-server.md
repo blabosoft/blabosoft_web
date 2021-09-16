@@ -102,9 +102,9 @@ UPDATE SimpleQueue SET Errors = 'Something went wrong'
 WHERE Id = 'd6513312-4dcc-4c44-b044-08b98257037c'
 ```
 
-The above commands don't conflict with the pop operation because the `ProcessingStartedAt` cell has already been set.
+The above commands don't conflict with the pop operation because the value of `ProcessingStartedAt` has already been set.
 
-It is also possible that you wasn't able to finalize the operation, because the consumer process was killed before it could have made the finall call. There are many manual or automated solutions to address this issue, but I don't cover them in this article.
+It is also possible that you weren't able to finalize the operation, because the consumer process was killed before it could have made the finall call. There are many manual or automated solutions to address this issue, but I don't cover them in this article.
 
 ## Summary
 
