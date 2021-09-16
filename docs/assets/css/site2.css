@@ -87,6 +87,12 @@ div.highlight {
     margin: 20px 0 20px 0;
 }
 
+@media (max-width: 600px) {
+    body.blabo code[class*="language-"], body.blabo pre[class*="language-"]{
+        font-size: 0.87rem;
+    }
+}
+
 
 .post .postInfo .date{
     color: #555;
