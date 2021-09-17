@@ -3,7 +3,7 @@ title: Implementing a Simple Queue in PostgreSQL
 summary: In this article I show you how you can implement efficient queue operations using PostgresSQL database. The implementation uses atomic 'test and set' method for popping elements from queue ensuring consistent behaviour.
 layout: post
 permalink: implementing-queue-in-postgresql
-last_modified_at: 2021-09-13
+last_modified_at: 2021-09-17
 ---
 
 It's a common situation when you have to process items stored somewhere using background jobs. I think it is more common when you can't (don't want to) ensure that only one job instance accesses the items at the same time.
