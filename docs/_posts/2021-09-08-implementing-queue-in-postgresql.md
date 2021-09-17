@@ -120,4 +120,6 @@ Keep in mind that these operations don't conflict with the popping operation bec
 We saw how we can implement very simple and consistent queue operations using PostgreSQL. The consistency is ensured by the atomic pop operation. 
 
 __Other Databases__
-All code examples above use Postgres dialect of SQL, but the described method can be implemented on all major relational (SQL) database like SQL Server or MySQL.
+All code examples above use Postgres dialect of SQL, but the described method can be implemented on all major relational (SQL) databases like SQL Server or MySQL.
+
+I wrote [another post](/implementing-queue-in-sql-server "Implementing a Simpel Queue in SQL Server") which describes how you can implement it in Microsoft SQL Server.

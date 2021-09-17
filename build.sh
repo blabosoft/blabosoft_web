@@ -7,6 +7,7 @@ CONTAINER_NAME=jekyll_blabo
 mkdir --mode=777 --parents $BUILD_DIRNAME
 
 podman stop $CONTAINER_NAME 
+podman rm $CONTAINER_NAME
 
 # serve
 podman run --rm \
